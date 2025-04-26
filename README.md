@@ -13,7 +13,7 @@
 
 -> 404 Not Found page
 
-git clone (https://github.com/MBARC15/ShoppyGlobe.git)
+git clone ((https://github.com/MBARC132/Internshalaproject2/tree/main))
 cd shoppyglobe
 npm install
 npm run dev
