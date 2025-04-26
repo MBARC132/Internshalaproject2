@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import { useEffect } from 'react';
 import Header from "./Components/Header";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 const ProductList = React.lazy(() => import("./Components/ProductList"));
