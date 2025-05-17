@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.7.0",
+    "bcryptjs": "^3.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
@@ -29,5 +30,9 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "vite": "^6.3.1"
-  }
+  },
+  "description": "ShoppyGlobe is a modern, responsive React-based e-commerce application where users can browse products, search by name, view details, and manage their shopping cart seamlessly. It also includes lazy loading and a custom 404 Not Found page.",
+  "main": "eslint.config.js",
+  "author": "",
+  "license": "ISC"
 }

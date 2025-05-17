@@ -6,6 +6,8 @@ const ProductDetail = React.lazy(() => import("./Components/ProductDetail"));
 const Cart = React.lazy(() => import("./Components/Cart"));
 const NotFound = React.lazy(() => import("./Components/NotFound"));  
 const ProductItem = React.lazy(() => import("./Components/ProductItem"));  
+const RegisterFrom = React.lazy(() => import("./Components/RegisterForm"));  
+const LoginForm = React.lazy(() => import("./Components/LoginForm"));  
 
 
 function App() {
@@ -21,9 +23,11 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<ProductList />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/ProductItem" element={<ProductItem />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/RegisterForm" element={<RegisterFrom />} />
+        <Route path="/LoginForm" element={<LoginForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       </Suspense>

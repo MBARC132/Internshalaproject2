@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../redux/cartSlice';
-import './App.css'
+import './App.css';
+import { Link } from 'react-router-dom';
 function Cart() {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function Cart() {
                 <button className='Checkout-btn'>Proceed to Checkout</button>
             </div>
             )}
+            <button><Link to="/">Home</Link></button>
          </div>
         </>
     )

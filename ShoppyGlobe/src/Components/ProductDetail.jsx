@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import './App.css';
 
 function ProductDetail() {
-    const { id } = useParams();
+    const { id } = useParams();  
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -15,7 +15,7 @@ function ProductDetail() {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const res = await fetch(`https://dummyjson.com/products/${id}`);
+                const res = await fetch(`http://localhost:5000/api/products/${id}`);
                 if (!res.ok) throw new Error("Product not Found");
                 const data = await res.json();
                 setProduct(data);
@@ -29,10 +29,17 @@ function ProductDetail() {
     }, [id]);
 
     const handleAddToCart = () => {
-        dispatch(addToCart(product));
+        const productToAdd = {
+            id: product._id,
+            name: product.name,
+            image: product.image, 
+            price: product.price,
+            quantity: 1,
+        };
+        dispatch(addToCart(productToAdd));
         setSuccessMessage("Item added to the cart!");
-        setTimeout(() =>{
-            setSuccessMessage('')
+        setTimeout(() => {
+            setSuccessMessage('');
         }, 2000);
     };
 
@@ -41,17 +48,17 @@ function ProductDetail() {
 
     return (
         <div className="product-detail">
-            <h2 className="product-title">{product.title}</h2>
+            <h2 className="product-title">{product.name}</h2>
             <img
                 className="product-image"
-                src={product.thumbnail}
-                alt={product.title}
+                src={product.image}
+                alt={product.name}
             />
             <p className="product-description">{product.description}</p>
             <p className="product-price">Price: ${product.price}</p>
-            <p className="product-brand">Brand: {product.brand}</p>
-            <p className="product-category">Category: {product.category}</p>
+            <p className="product-stock">Stock: {product.stock}</p>
             <button className="detail-btn" onClick={handleAddToCart}>Add to Cart</button>
+            <Link to="/" className="btn-link">Home</Link>
             {successMessage && <p className="success-message">{successMessage}</p>}
         </div>
     );

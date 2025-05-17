@@ -13,18 +13,18 @@ const ProductItem = ({ product }) => {
 
     return (
         <div className="product-item">
-            {/* Link to Product Details Page */}
-            <Link to={`/product/${product.id}`} className="product-link">
+            <Link to={`/products/${product._id}`} className="product-link">
                 <img 
-                    src={product.thumbnail}  
+                    src={product.image}  
                     alt={product.title} 
                     className="product-image"
                 />
-                <h3>{product.title}</h3>
-                <p>{product.description.slice(0, 60)}...</p>
+                <h3>{product.name}</h3>
+                <p>{product.description.length > 60 ? product.description.slice(0, 60) + "..." : product.description}</p>
+                <p>Price: ${product.price}</p>
+                <p>Stock: {product.stock}</p>
             </Link>
             
-            {/* Add to Cart Button */}
             <button onClick={handleAddToCart} className="add-btn">
                 Add to Cart
             </button>

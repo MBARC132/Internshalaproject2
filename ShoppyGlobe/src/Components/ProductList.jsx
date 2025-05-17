@@ -2,7 +2,6 @@ import { useState } from 'react';
 import useFetchProducts from '../hooks/useFetchProduct';
 import ProductItem from './ProductItem';
 import './App.css';
-// import { Link } from 'react-router-dom';
 
 function ProductList() {
     const { products, loading, error } = useFetchProducts();
@@ -12,25 +11,25 @@ function ProductList() {
     if (error) return <div>Error: {error}</div>;
 
     const filteredProducts = products.filter(product => 
-        product.title.toLowerCase().includes(searchItem.toLowerCase())
-    )
+        product.name?.toLowerCase().includes(searchItem.toLowerCase())
+    );
 
     return (
         <>
-        <input type="text"
-        placeholder='Search Products...'
-        value={searchItem}
-        onChange={(e) => setSearchItem(e.target.value)}
-        className='search-input' />
-        <div className='Product-list'>
-            {filteredProducts.map(product => (
-                <div key={product.id} className='product-item'>
-                    <ProductItem key = {product.id} product={product} />
-                </div>
-            ))}
-        </div>
+            <input
+                type="text"
+                placeholder="Search Products..."
+                value={searchItem}
+                onChange={(e) => setSearchItem(e.target.value)}
+                className="search-input"
+            />
+            <div className="Product-list">
+                {filteredProducts.map(product => (
+                    <ProductItem key={product.id} product={product} />
+                ))}
+            </div>
         </>
-    )
+    );
 }
 
 export default ProductList;
